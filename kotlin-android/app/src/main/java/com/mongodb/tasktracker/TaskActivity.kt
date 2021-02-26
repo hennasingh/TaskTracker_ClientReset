@@ -50,9 +50,12 @@ class TaskActivity : AppCompatActivity() {
 
             // save this configuration as the default for this entire app so other activities and threads can open their own realm instances
             Realm.setDefaultConfiguration(config)
+//            val privateRealm = SyncConfiguration.Builder(user!!, "Private")
+//                .waitForInitialRemoteData()
+//                .build()
 
             // Sync all realm changes via a new instance, and when that instance has been successfully created connect it to an on-screen list (a recycler view)
-            Realm.getInstanceAsync(config, object: Realm.Callback() {
+            Realm.getInstanceAsync(config, object : Realm.Callback() {
                 override fun onSuccess(realm: Realm) {
                     // since this realm should live exactly as long as this activity, assign the realm to a member variable
                     this@TaskActivity.realm = realm
